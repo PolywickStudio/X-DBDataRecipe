@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{60803CEE-CA23-4F83-8A78-6AA78FB0D368}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="qifeditor.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="qifeditor">
+        <MSBuild Projects="qifeditor.dproj"/>
+    </Target>
+    <Target Name="qifeditor:Clean">
+        <MSBuild Projects="qifeditor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="qifeditor:Make">
+        <MSBuild Projects="qifeditor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="qifeditor"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="qifeditor:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="qifeditor:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

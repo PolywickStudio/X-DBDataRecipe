@@ -1,0 +1,45 @@
+!Type:Bank
+D01/07/2021
+U-4.99
+T-4.99
+NPOS
+PCBTL
+MCoffee Bean & Tea Leaf
+^
+D01/07/2021
+U-16.51
+T-16.5
+NPOS
+PSTBK
+MStarbucks Purchase
+^
+D01/07/2019
+U-15.21
+T-15.21
+NPOS
+PGTT
+MGrab Taxi Transaction
+^
+D01/07/2021
+U-1.94
+T-1.94
+NMPOS
+PDelivery
+MPackage Delivery
+^
+D01/07/2021
+U-6.44
+T-6.44
+NMPOS
+PDelivery
+MPackage Delivery
+^
+D05/07/2021
+U-12.78
+T-12.78
+NPOS
+PSTBK
+MStarBucks Coffee
+^
+D
+^
