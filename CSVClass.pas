@@ -13,10 +13,10 @@ interface
 uses Classes, Generics.Collections, SysUtils;
 
 { Classes TnvvCSVReader, TnvvCSVFileReader and TnvvCSVStringReader work with
-  CSV formatted data as it defined in “RFC 4180. Common Format and MIME Type for
-  Comma-Separated Values (CSV) Files”: http://tools.ietf.org/html/rfc4180
-  According to Wikipedia, “A general standard for the CSV file format does not
-  exist, but RFC 4180 provides a de facto standard for some aspects of it.”
+  CSV formatted data as it defined in ï¿½RFC 4180. Common Format and MIME Type for
+  Comma-Separated Values (CSV) Filesï¿½: http://tools.ietf.org/html/rfc4180
+  According to Wikipedia, ï¿½A general standard for the CSV file format does not
+  exist, but RFC 4180 provides a de facto standard for some aspects of it.ï¿½
 
   While mentioned classes are RFC4180-compliant, they provide (public) properties
   that allow handling of other existing variations of CSV format as well. }
@@ -187,7 +187,7 @@ type
 
     { QuoteCharCode:
       - It is a code (!) and not a char. Virtually any (see also property ASCIIonly)
-        unicode character can be used as “quote char”. It is assumed that this
+        unicode character can be used as ï¿½quote charï¿½. It is assumed that this
         character is also used as escape character }
     property QuoteCharCode: Integer read GetQuoteCharCode write SetQuoteCharCode;
 
@@ -199,21 +199,21 @@ type
 
     { ASCIIOnly:
       - False (by default): Full Unicode range of characters is handled. Characters
-                            with codes less than 0x20 are considered as “special characters”
+                            with codes less than 0x20 are considered as ï¿½special charactersï¿½
                             (see property IgnoreSpecialCharacters below).
       - True: Only ASCII range of characters is handled. Characters with codes
-              outside range 0x20 – 0x7E are considered as “special characters”
+              outside range 0x20 ï¿½ 0x7E are considered as ï¿½special charactersï¿½
               (see property IgnoreSpecialCharacters below). }
     property ASCIIonly: Boolean read FASCIIonly write SetASCIIonly;
 
     { IgnoreSpecialCharacters
-      - False (by default): Presence of “special characters”, as they defined above
+      - False (by default): Presence of ï¿½special charactersï¿½, as they defined above
                             in property ASCIIonly description, causes exception.
                             This does not affect line breaks, field separator and
-                            quote characters even if last two are from the “special
-                            character” range.
-      - True: “Special characters” are ignored except line breaks, field separator
-              and quote characters even if last two are from the “special character” range. }
+                            quote characters even if last two are from the ï¿½special
+                            characterï¿½ range.
+      - True: ï¿½Special charactersï¿½ are ignored except line breaks, field separator
+              and quote characters even if last two are from the ï¿½special characterï¿½ range. }
     property IgnoreSpecialCharacters: Boolean
       read FIgnoreSpecialCharacters write SetIgnoreSpecialCharacters;
    // ------------------- Input parameters (end)
@@ -850,7 +850,7 @@ begin
     end
     else
     begin
-      //Reading “beyond” end of file. Next does nothing.
+      //Reading ï¿½beyondï¿½ end of file. Next does nothing.
       //Field values will state cleared, which is done at setting Eof.
     end;
   end

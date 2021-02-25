@@ -1,3 +1,6 @@
+// Polywick Studio
+// Copyright (c) 2021 by Polywick Studio
+// MIT License
 unit xdataedit;
 interface
 uses
@@ -81,6 +84,7 @@ type
     Undo1: TMenuItem;
     sbrStatus: TStatusBar;
     mnuFileSaveAs: TMenuItem;
+    Label1: TLabel;
     procedure Copy1Click(Sender: TObject);
     procedure Cut1Click(Sender: TObject);
     procedure dbListAfterDelete(DataSet: TDataSet);
@@ -105,6 +109,12 @@ type
     procedure Paste1Click(Sender: TObject);
     procedure SelectAll1Click(Sender: TObject);
     procedure Undo1Click(Sender: TObject);
+    procedure dbListAfterScroll(DataSet: TDataSet);
+    procedure dbListNewRecord(DataSet: TDataSet);
+    procedure FormDestroy(Sender: TObject);
+    procedure About1Click(Sender: TObject);
+  protected
+    procedure WMDropFiles(var Msg: TWMDropFiles); message WM_DROPFILES;
   private
     sFilename: string;
     bModified: boolean;
@@ -139,6 +149,7 @@ procedure TForm2.FormCreate(Sender: TObject);
 var
   sFile: string;
 begin
+  DragAcceptFiles(Handle, True);
   SetFilename('');
   bModified := false;
   atl := TTransactionList.Create;
@@ -152,6 +163,15 @@ begin
       FileOpen(sFile);
     end;
   end;
+  if (dbList.Active = false) then begin
+    dbList.Active := true;
+    dbList.First;
+  end;
+end;
+
+procedure TForm2.FormDestroy(Sender: TObject);
+begin
+  DragAcceptFiles(Self.Handle, False);
 end;
 
 procedure TForm2.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -169,6 +189,42 @@ begin
       CanClose := false;
     end;
   end;
+end;
+
+procedure TForm2.WMDropFiles(var Msg: TWMDropFiles);
+var
+  DropH: HDROP;               // drop handle
+  DroppedFileCount: Integer;  // number of files dropped
+  FileNameLength: Integer;    // length of a dropped file name
+  FileName: string;           // a dropped file name
+  I: Integer;                 // loops thru all dropped files
+  //DropPoint: TPoint;          // point where files dropped
+begin
+  inherited;
+  DropH := Msg.Drop;
+  try
+    DroppedFileCount := DragQueryFile(DropH, $FFFFFFFF, nil, 0);
+    for I := 0 to Pred(DroppedFileCount) do
+    begin
+      FileNameLength := DragQueryFile(DropH, 0, nil, 0);
+      SetLength(FileName, FileNameLength);
+      DragQueryFile(DropH, 0, PChar(FileName), FileNameLength + 1);
+      //
+      if (sFilename = '') and (sFilename <> FileName) then begin
+        FileOpen(FileName);
+      end else begin
+        if (sFilename <> FileName) then begin
+          ShellExecute(
+            Handle, 'open', PChar(System.ParamStr(0)),
+            PChar(FileName), nil, SW_SHOWNORMAL);
+        end;
+      end;
+    end;
+    //DragQueryPoint(DropH, DropPoint);
+  finally
+    DragFinish(DropH);
+  end;
+  Msg.Result := 0;
 end;
 
 //==============================================================================
@@ -235,7 +291,7 @@ begin
     SetFilename(AFilename);
     //
     dbList.Active := true;
-    dbList.Last;
+    dbList.First;
   end;
 end;
 
@@ -247,7 +303,11 @@ begin
     if (sFilename = '') and (sFilename <> sFile) then begin
       FileOpen(sFile);
     end else begin
-      ShellExecute(Handle, 'open', PChar(System.ParamStr(0)), PChar(sFile), nil, SW_SHOWNORMAL);
+      if (sFilename <> sFile) then begin
+        ShellExecute(
+          Handle, 'open', PChar(System.ParamStr(0)),
+          PChar(sFile), nil, SW_SHOWNORMAL);
+      end;
     end;
   end;
 end;
@@ -315,7 +375,8 @@ end;
 
 procedure TForm2.mnuFileNewClick(Sender: TObject);
 begin
-  ShellExecute(Handle, 'open', PChar(System.ParamStr(0)), '', nil, SW_SHOWNORMAL);
+  if (sFilename <> '') and (atl.Count > 0) then
+    ShellExecute(Handle, 'open', PChar(System.ParamStr(0)), '', nil, SW_SHOWNORMAL);
 end;
 
 procedure TForm2.mnuFileClearClick(Sender: TObject);
@@ -367,6 +428,13 @@ begin
       TDBMemo(aCtrl).CutToClipboard;
     end;
   end;
+end;
+
+procedure TForm2.About1Click(Sender: TObject);
+begin
+  ShowMessage(
+    'Polywick Studio''s QIF Editor' +#13#10 +
+    'https://www.polywickstudio.com');
 end;
 
 procedure TForm2.Copy1Click(Sender: TObject);
@@ -584,6 +652,11 @@ begin
   bModified := true;
 end;
 
+procedure TForm2.dbListAfterScroll(DataSet: TDataSet);
+begin
+  //navList.Re
+end;
+
 procedure TForm2.dbListCountRecords(DataSet: TDataSet; var Count: Integer);
 begin
   Count := atl.Count;
@@ -644,6 +717,11 @@ end;
 procedure TForm2.dbListInsertRecord(DataSet: TDataSet; Index: Integer);
 begin
   atl.Insert(Index, TTransaction.Create);
+end;
+
+procedure TForm2.dbListNewRecord(DataSet: TDataSet);
+begin
+  dbListdate.AsDateTime := Now;
 end;
 
 procedure TForm2.dbListDeleteRecord(DataSet: TDataSet; Index: Integer);

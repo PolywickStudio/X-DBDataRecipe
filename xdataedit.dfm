@@ -15,6 +15,7 @@ object Form2: TForm2
   Position = poScreenCenter
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 15
   object Splitter1: TSplitter
@@ -123,17 +124,30 @@ object Form2: TForm2
         Caption = 'Date (&D):'
         FocusControl = edtDField
       end
+      object Label1: TLabel
+        AlignWithMargins = True
+        Left = 272
+        Top = 3
+        Width = 82
+        Height = 19
+        Align = alRight
+        AutoSize = False
+        Caption = 'MM/DD/YYYY'
+      end
       object edtDField: TDBEdit
         AlignWithMargins = True
         Left = 89
         Top = 0
-        Width = 265
+        Width = 177
         Height = 25
+        Hint = 'MM/DD/YYYY'
         Margins.Top = 0
         Margins.Bottom = 0
         Align = alClient
         DataField = 'date'
         DataSource = dsList
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 0
         ExplicitHeight = 23
       end
@@ -329,6 +343,7 @@ object Form2: TForm2
         Align = alClient
         DataField = 'mfield'
         DataSource = dsList
+        MaxLength = 250
         TabOrder = 0
       end
     end
@@ -341,6 +356,7 @@ object Form2: TForm2
       DataSource = dsList
       Align = alBottom
       TabOrder = 6
+      TabStop = True
     end
   end
   object sbrStatus: TStatusBar
@@ -379,8 +395,8 @@ object Form2: TForm2
         OnClick = mnuFileSaveAsClick
       end
       object mnuFileClear: TMenuItem
-        Caption = '&Clear'
-        ShortCut = 16451
+        Caption = 'Clea&r'
+        ShortCut = 16466
         OnClick = mnuFileClearClick
       end
       object N1: TMenuItem
@@ -440,6 +456,7 @@ object Form2: TForm2
       Caption = '&Help'
       object About1: TMenuItem
         Caption = '&About...'
+        OnClick = About1Click
       end
     end
   end
@@ -465,15 +482,19 @@ object Form2: TForm2
   object dbList: TXDBData
     AfterDelete = dbListAfterDelete
     AfterPost = dbListAfterPost
+    AfterScroll = dbListAfterScroll
     OnCountRecords = dbListCountRecords
     OnDeleteRecord = dbListDeleteRecord
     OnGetFieldData = dbListGetFieldData
     OnInsertRecord = dbListInsertRecord
+    OnNewRecord = dbListNewRecord
     OnSetFieldData = dbListSetFieldData
     Left = 64
     Top = 148
     object dbListdate: TDateField
       FieldName = 'date'
+      DisplayFormat = 'MM/dd/yyyy'
+      EditMask = '!99/99/0000;1;_'
     end
     object dbListufield: TCurrencyField
       FieldName = 'ufield'

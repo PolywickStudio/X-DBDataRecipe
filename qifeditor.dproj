@@ -85,7 +85,9 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=Polywick Graphics, PH, Corp.;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=QIF Editor;LegalCopyright=Copyright © 2021 by Polywick Graphics, PH, Corp.;LegalTrademarks=Polywick is a trademark of Polywick Graphics, PH, Copr.;OriginalFilename=qifeditor.exe;ProgramID=ph.polywickstudio.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Polywick Graphics, PH, Corp.;FileDescription=$(MSBuildProjectName);FileVersion=1.0.1.0;InternalName=QIF Editor;LegalCopyright=Copyright © 2021 by Polywick Graphics, PH, Corp.;LegalTrademarks=Polywick is a trademark of Polywick Graphics, PH, Copr.;OriginalFilename=qifeditor.exe;ProgramID=ph.polywickstudio.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <DCC_UnitSearchPath>C:\Users\Public\Delphi\xdbdata2a;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <VerInfo_Release>1</VerInfo_Release>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -128,20 +130,10 @@
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\sscomponents.bpl">StoryServer Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Delphi\incubator\storyserver\story6\bpl\Win32\dclTMSScripter220.bpl">File C:\Users\Public\Delphi\incubator\storyserver\story6\bpl\Win32\dclTMSScripter220.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\fr10.bpl">FastReport 2.5 Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k270.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp270.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfs27.bpl">File C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfs27.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfrxIntIO27.bpl">File C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfrxIntIO27.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfrxIntIOIndy27.bpl">File C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfrxIntIOIndy27.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfrxTee27.bpl">File C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfrxTee27.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfsTee27.bpl">File C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfsTee27.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfsDB27.bpl">File C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfsDB27.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfrxADO27.bpl">File C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfrxADO27.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfsADO27.bpl">File C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfsADO27.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfrxDBX27.bpl">File C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfrxDBX27.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfrxIBX27.bpl">File C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfrxIBX27.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfsIBX27.bpl">File C:\Program Files (x86)\FastReport 6 VCL Professional\LibD27\dclfsIBX27.bpl not found</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
